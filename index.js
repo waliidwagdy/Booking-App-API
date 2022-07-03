@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import { errorHandler } from "./middlewares/error.js";
 import authRoutes from "./routes/auth.js";
 import hotelsRoutes from "./routes/hotels.js";
@@ -14,6 +15,7 @@ const app = express();
 //middlewares
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/hotels", hotelsRoutes);
 app.use("/api/users", usersRoutes);
