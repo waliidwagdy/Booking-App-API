@@ -12,6 +12,8 @@ import roomsRoutes from "./routes/rooms.js";
 dotenv.config();
 const app = express();
 
+const port = process.env.PORT || 8800;
+
 //middlewares
 app.use(cookieParser());
 app.use(express.json());
@@ -30,9 +32,8 @@ mongoose.connection.on("disconnected", () => {
 (async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-
-    app.listen(8800, () => {
-      console.log("Connected to port:8800");
+    app.listen(port, () => {
+      console.log(`Connected to port:${port}`);
     });
   } catch (error) {
     throw error;
