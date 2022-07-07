@@ -11,13 +11,14 @@ import roomsRoutes from "./routes/rooms.js";
 
 dotenv.config();
 const app = express();
-
 const port = process.env.PORT || 8800;
-
 //middlewares
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
+app.get("/", (req, res, next) => {
+  res.json("This is the default route");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/hotels", hotelsRoutes);
 app.use("/api/users", usersRoutes);
